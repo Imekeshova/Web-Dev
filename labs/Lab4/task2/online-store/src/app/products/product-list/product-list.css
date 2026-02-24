@@ -1,0 +1,13 @@
+.title {
+  text-align: center;
+  padding: 30px;
+  font-size: 32px;
+  color: #5a4fcf;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  padding: 30px;
+}
