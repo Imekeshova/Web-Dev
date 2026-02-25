@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Product } from '../../models/product.model';
 
 @Component({
@@ -28,6 +28,11 @@ import { Product } from '../../models/product.model';
         }
       </div>
 
+      <p class="likes">❤️ {{ product.likes }}</p>
+
+      <button (click)="onLike()">Like</button>
+      <button class="delete" (click)="onDelete()">Delete</button>
+
       <a class="view" [href]="product.link" target="_blank">
         View on Kaspi
       </a>
@@ -43,6 +48,9 @@ export class ProductCardComponent {
 
   @Input() product!: Product;
 
+  @Output() like = new EventEmitter<Product>();
+  @Output() remove = new EventEmitter<number>();
+
   currentImageIndex = 0;
 
   nextImage() {
@@ -54,6 +62,14 @@ export class ProductCardComponent {
     this.currentImageIndex =
       (this.currentImageIndex - 1 + this.product.images.length) %
       this.product.images.length;
+  }
+
+  onLike() {
+    this.like.emit(this.product);
+  }
+
+  onDelete() {
+    this.remove.emit(this.product.id);
   }
 
   shareWhatsApp() {

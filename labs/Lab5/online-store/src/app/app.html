@@ -1,0 +1,25 @@
+<div class="categories-block">
+
+  <h1 class="categories-title">CATEGORIES</h1>
+
+  <div class="categories">
+
+    <button 
+      [class.active]="selectedCategoryId === null"
+      (click)="selectCategory(null)">
+      All
+    </button>
+
+    @for (cat of categories; track cat.id) {
+      <button 
+        [class.active]="selectedCategoryId === cat.id"
+        (click)="selectCategory(cat.id)">
+        {{ cat.name }}
+      </button>
+    }
+
+  </div>
+
+</div>
+
+<app-product-list [categoryId]="selectedCategoryId"></app-product-list>

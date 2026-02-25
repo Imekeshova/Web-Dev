@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Product } from '../../models/product.model';
 import { ProductCardComponent } from '../product-card/product-card';
 
@@ -6,18 +6,12 @@ import { ProductCardComponent } from '../product-card/product-card';
   selector: 'app-product-list',
   standalone: true,
   imports: [ProductCardComponent],
-  template: `
-    <h1 class="title">Online Store</h1>
-
-    <div class="grid">
-      @for (product of products; track product.id) {
-        <app-product-card [product]="product"></app-product-card>
-      }
-    </div>
-  `,
+  templateUrl: './product-list.html',
   styleUrls: ['./product-list.css']
 })
 export class ProductListComponent {
+
+  @Input() categoryId: number | null = null;
 
   products: Product[] = [
     {
@@ -33,7 +27,9 @@ export class ProductListComponent {
     'https://resources.cdn-kaspi.kz/img/m/p/h6d/h89/86275143565342.jpg?format=gallery-medium',
     'https://resources.cdn-kaspi.kz/img/m/p/hbf/h6b/86275143598110.jpg?format=gallery-medium'
   ],
-  link: 'https://kaspi.kz/shop/p/apple-iphone-15-128gb-chernyi-113137790/?c=750000000'
+  link: 'https://kaspi.kz/shop/p/apple-iphone-15-128gb-chernyi-113137790/?c=750000000',
+  likes: 1200,
+  categoryId: 1
 },
 {
   id: 2,
@@ -47,7 +43,9 @@ export class ProductListComponent {
     'https://resources.cdn-kaspi.kz/img/m/p/h35/h8f/84378448232478.jpg?format=gallery-medium',
     'https://resources.cdn-kaspi.kz/img/m/p/h3d/h8e/64208874405918.jpg?format=gallery-medium'
   ],
-  link: 'https://kaspi.kz/shop/p/apple-iphone-13-128gb-chernyi-102298404/?c=750000000'
+  link: 'https://kaspi.kz/shop/p/apple-iphone-13-128gb-chernyi-102298404/?c=750000000',
+  likes: 900,
+  categoryId: 1
 },
 {
   id: 3,
@@ -61,7 +59,9 @@ export class ProductListComponent {
     'https://resources.cdn-kaspi.kz/img/m/p/p0c/pd7/61291243.jpg?format=gallery-medium',
     'https://resources.cdn-kaspi.kz/img/m/p/p7d/pd7/61291247.jpg?format=gallery-medium'
   ],
-  link: 'https://kaspi.kz/shop/p/samsung-galaxy-a07-6-gb-128-gb-chernyi-144817763/?c=750000000'
+  link: 'https://kaspi.kz/shop/p/samsung-galaxy-a07-6-gb-128-gb-chernyi-144817763/?c=750000000',
+  likes: 500,
+  categoryId: 1
 },
 {
   id: 4,
@@ -76,7 +76,9 @@ export class ProductListComponent {
     'https://resources.cdn-kaspi.kz/img/m/p/p6b/pfe/73833198.png?format=gallery-medium',
     'https://resources.cdn-kaspi.kz/img/m/p/p37/pb4/73833200.png?format=gallery-medium'
   ],
-  link: 'https://kaspi.kz/shop/p/huawei-watch-gt-6-41-mm-zolotistyi-zolotistyi-147986879/?c=750000000'
+  link: 'https://kaspi.kz/shop/p/huawei-watch-gt-6-41-mm-zolotistyi-zolotistyi-147986879/?c=750000000',
+  likes: 150,
+  categoryId: 4,
 },
 {
   id: 5,
@@ -91,7 +93,9 @@ export class ProductListComponent {
     'https://resources.cdn-kaspi.kz/img/m/p/h12/hfe/87295470796830.png?format=gallery-medium',
     'https://resources.cdn-kaspi.kz/img/m/p/hff/h15/87295470829598.png?format=gallery-medium'
   ],
-  link: 'http://kaspi.kz/shop/p/apple-iphone-16-128gb-chernyi-123713453/?c=750000000'
+  link: 'http://kaspi.kz/shop/p/apple-iphone-16-128gb-chernyi-123713453/?c=750000000',
+  likes: 2000,
+  categoryId: 1
 },
 {
   id: 6,
@@ -106,7 +110,9 @@ export class ProductListComponent {
     'https://resources.cdn-kaspi.kz/img/m/p/h8f/hce/64209121476638.jpg?format=gallery-medium',
     'https://resources.cdn-kaspi.kz/img/m/p/h4b/h84/64209123573790.jpg?format=gallery-medium'
   ],
-  link: 'https://kaspi.kz/shop/p/apple-iphone-13-128gb-belyi-102298420/?c=750000000'
+  link: 'https://kaspi.kz/shop/p/apple-iphone-13-128gb-belyi-102298420/?c=750000000',
+  likes: 850,
+  categoryId: 1
 },
 {
   id: 7,
@@ -121,7 +127,9 @@ export class ProductListComponent {
     'https://resources.cdn-kaspi.kz/img/m/p/p7c/p03/71084624.png?format=gallery-medium',
     'https://resources.cdn-kaspi.kz/img/m/p/p0d/p51/71320356.png?format=gallery-medium'
   ],
-  link: 'https://kaspi.kz/shop/p/vneshnii-akkumuljator-estellax-magsafe-pro-10000-mach-22-5-vt-fioletovyi-146052658/?c=750000000'
+  link: 'https://kaspi.kz/shop/p/vneshnii-akkumuljator-estellax-magsafe-pro-10000-mach-22-5-vt-fioletovyi-146052658/?c=750000000',
+  likes: 300,
+  categoryId: 2
 },
 {
   id: 8,
@@ -136,7 +144,9 @@ export class ProductListComponent {
     'https://resources.cdn-kaspi.kz/img/m/p/hac/h2e/86584697683998.jpg?format=gallery-medium',
     'https://resources.cdn-kaspi.kz/img/m/p/h46/h73/86584697716766.jpg?format=gallery-medium'
   ],
-  link: 'https://kaspi.kz/shop/p/redmi-a3x-3-gb-64-gb-chernyi-121654928/?c=750000000'
+  link: 'https://kaspi.kz/shop/p/redmi-a3x-3-gb-64-gb-chernyi-121654928/?c=750000000',
+  likes: 400,
+  categoryId: 1
 },
 {
   id: 9,
@@ -151,7 +161,9 @@ export class ProductListComponent {
     'https://resources.cdn-kaspi.kz/img/m/p/p9f/p4c/60229633.png?format=gallery-medium',
     'https://resources.cdn-kaspi.kz/img/m/p/p67/p4c/60229635.png?format=gallery-medium'
   ],
-  link: 'https://kaspi.kz/shop/p/vneshnii-akkumuljator-virma-spb10k-magnetic-10000-mach-22-5-vt-seryi-142183000/?c=750000000'
+  link: 'https://kaspi.kz/shop/p/vneshnii-akkumuljator-virma-spb10k-magnetic-10000-mach-22-5-vt-seryi-142183000/?c=750000000',
+  likes: 250,
+  categoryId: 2
 },
 {
   id: 10,
@@ -165,7 +177,9 @@ export class ProductListComponent {
     'https://resources.cdn-kaspi.kz/img/m/p/h52/h6d/86037848129566.png?format=gallery-medium',
     'https://resources.cdn-kaspi.kz/img/m/p/h15/h72/86037848195102.png?format=gallery-medium'
   ],
-  link: 'https://kaspi.kz/shop/p/naushniki-gerlax-gh-34-chernyi-119492193/?c=750000000'
+  link: 'https://kaspi.kz/shop/p/naushniki-gerlax-gh-34-chernyi-119492193/?c=750000000',
+  likes: 100,
+  categoryId: 3
 },
 {
   id: 11,
@@ -179,7 +193,9 @@ export class ProductListComponent {
     'https://resources.cdn-kaspi.kz/img/m/p/pec/pd7/97865769.jpeg',
     'https://resources.cdn-kaspi.kz/img/m/p/h9f/had/87309385662494.png?format=gallery-medium'
   ],
-  link: 'https://kaspi.kz/shop/p/naushniki-apple-airpods-4-belyi-124333372/?c=750000000'
+  link: 'https://kaspi.kz/shop/p/naushniki-apple-airpods-4-belyi-124333372/?c=750000000',
+  likes: 1800,
+  categoryId: 3
 },
 {
   id: 12,
@@ -192,14 +208,159 @@ export class ProductListComponent {
     'https://resources.cdn-kaspi.kz/img/m/p/hf1/h03/84526695677982.jpg?format=gallery-medium',
     'https://resources.cdn-kaspi.kz/img/m/p/pef/p29/78474502.png?format=gallery-medium',
     'https://resources.cdn-kaspi.kz/img/m/p/p0b/p2a/78474503.png?format=gallery-medium',
-    'https://resources.cdn-kaspi.kz/img/m/p/p27/p2a/78474504.png?format=gallery-medium'
+    'https://resources.cdn-kaspi.kz/img/m/p/p27/p2a/78474504.png?format=gallery-medium',
+    'https://resources.cdn-kaspi.kz/img/m/p/p27/p2a/78474505.png?format=gallery-medium'
   ],
-  link: 'https://kaspi.kz/shop/p/sony-playstation-5-slim-114696098/?c=750000000'
+  link: 'https://kaspi.kz/shop/p/sony-playstation-5-slim-114696098/?c=750000000',
+  likes: 2200,
+  categoryId: 4
+}, 
+{
+  id: 13,
+  name: 'Телевизор Яндекс Бейсик с Алисой YNDX-00076 140 см черный',
+  description: 'Представляем Яндекс Бейсик с Алисой YNDX-00076 — ваш идеальный спутник для домашнего развлечения! Этот LED-телевизор с диагональю 140 см и разрешением 4K UHD обеспечит вам высококачественное изображение и объемное звучание благодаря Dolby Audio.',
+  price: 238645,
+  rating: 4.7,
+  image: 'https://resources.cdn-kaspi.kz/img/m/p/pd4/p12/25408606.jpg?format=gallery-medium',
+  images: [
+    'https://resources.cdn-kaspi.kz/img/m/p/pd4/p12/25408606.jpg?format=gallery-medium',
+    'https://resources.cdn-kaspi.kz/img/m/p/p9c/p12/25408608.png?format=gallery-medium',
+    'https://resources.cdn-kaspi.kz/img/m/p/p80/p12/25408609.jpg?format=gallery-medium',
+    'https://resources.cdn-kaspi.kz/img/m/p/p14/p10/25408610.jpg?format=gallery-medium'
+  ],
+  link: 'https://kaspi.kz/shop/p/jandeks-beisik-s-alisoi-yndx-00076-140-sm-chernyi-133033164/?c=750000000',
+  likes: 0,
+  categoryId: 4
+},
+{
+  id: 14,
+  name: 'Очки виртуальной реальности Meta Quest 3 512GB',
+  description: 'Очки виртуальной реальности Meta Quest 3 — совершенствованный аппаратный стек и первая гарнитура с процессором Snapdragon XR2 Gen 2, обеспечивающая удвоенную вычислительную мощность графического процессора для более быстрой загрузки и более плавного игрового процесса по сравнению с Meta Quest 2.',
+  price: 290999,
+  rating: 4.8,
+  image: 'https://resources.cdn-kaspi.kz/img/m/p/h00/h89/84023738925086.png?format=gallery-medium',
+  images: [
+    'https://resources.cdn-kaspi.kz/img/m/p/h00/h89/84023738925086.png?format=gallery-medium',
+    'https://resources.cdn-kaspi.kz/img/m/p/hb3/h72/84136536309790.png?format=gallery-medium',
+    'https://resources.cdn-kaspi.kz/img/m/p/h0a/hd6/84136536440862.png?format=gallery-medium',
+    'https://resources.cdn-kaspi.kz/img/m/p/h25/hb7/84136536506398.png?format=gallery-medium'
+  ],
+  link: 'https://kaspi.kz/shop/p/meta-quest-3-512-gb-113525753/?c=750000000',
+  likes: 0,
+  categoryId: 4
+},
+{
+  id: 15,
+  name: 'Наушники Apple AirPods Max 2 фиолетовый',
+  description: 'Модель автоматически умеет определять, когда нужно отключить шумоподавление. За счет излучателей большого диаметра наушники выдают громкий звук с хорошим балансом частот. Пространственный звук создается благодаря динамическому отслеживанию положения головы пользователя.',
+  price: 288535,
+  rating: 4.9,
+  image: 'https://resources.cdn-kaspi.kz/img/m/p/p18/p38/3402331.jpeg?format=gallery-medium',
+  images: [
+    'https://resources.cdn-kaspi.kz/img/m/p/p18/p38/3402331.jpeg?format=gallery-medium',
+    'https://resources.cdn-kaspi.kz/img/m/p/p2b/p62/3531965.png?format=gallery-medium',
+    'https://resources.cdn-kaspi.kz/img/m/p/p66/p16/3402329.jpeg?format=gallery-medium',
+    'https://resources.cdn-kaspi.kz/img/m/p/paf/p34/3402330.jpeg?format=gallery-medium'
+  ],
+  link: 'https://kaspi.kz/shop/p/naushniki-apple-airpods-max-2-fioletovyi-128589567/?c=750000000',
+  likes: 0,
+  categoryId: 3
+},
+{
+  id: 16,
+  name: 'Apple Watch SE 2 Gen 2022 40mm starlight-бежевый',
+  description: 'Смарт-часы Apple Watch SE 2 Gen 2022 оснащены гибким силиконовым ремешком и квадратным сенсорным дисплеем с технологией OLED. Алюминиевый корпус устройства выдерживает неблагоприятные воздействия благодаря водонепроницаемости 5 Бар и прочности.',
+  price: 208000,
+  rating: 4.8,
+  image: 'https://resources.cdn-kaspi.kz/img/m/p/h9d/hf8/64534203301918.jpg?format=gallery-medium',
+  images: [
+    'https://resources.cdn-kaspi.kz/img/m/p/h9d/hf8/64534203301918.jpg?format=gallery-medium',
+    'https://resources.cdn-kaspi.kz/img/m/p/h41/hc5/64534206382110.jpg?format=gallery-medium',
+    'https://resources.cdn-kaspi.kz/img/m/p/h6d/hd0/64534209134622.jpg?format=gallery-medium'
+  ],
+  link: 'https://kaspi.kz/shop/p/apple-watch-se-2-gen-2022-40-mm-starlight-bezhevyi-106362759/?c=750000000',
+  likes: 0,
+  categoryId: 4
+},
+{
+  id: 17,
+  name: 'Зарядное устройство Apple 20W USB-C Power Adapter белый',
+  description: 'Адаптер питания Apple USB-C мощностью 20 Вт дает возможность быстро и эффективно заряжать гаджеты. Проверяется на основном сайте через QR на оригинальность. Этот адаптер совместим с любыми устройствами Apple, оснащенными портом USB-C: смартфон, планшет или смарт-часы.',
+  price: 1985,
+  rating: 4.9,
+  image: 'https://resources.cdn-kaspi.kz/img/m/p/h95/h0e/63961934823454.jpg?format=gallery-medium',
+  images: [
+    'https://resources.cdn-kaspi.kz/img/m/p/h95/h0e/63961934823454.jpg?format=gallery-medium',
+    'https://resources.cdn-kaspi.kz/img/m/p/haa/h98/63961936723998.jpg?format=gallery-medium',
+    'https://resources.cdn-kaspi.kz/img/m/p/h81/h1a/63961938624542.jpg?format=gallery-medium',
+    'https://resources.cdn-kaspi.kz/img/m/p/hb3/he6/80523586928670.png?format=gallery-medium'
+  ],
+  link: 'https://kaspi.kz/shop/p/apple-20w-usb-c-power-adapter-belyi-100984093/?c=750000000',
+  likes: 350,
+  categoryId: 2
+},
+{
+  id: 18,
+  name: 'Чехол CLASSNO для Apple Watch 10 42 мм прозрачный',
+  description: 'Чехол CLASSNO для Apple Watch 10 42 мм — это надёжная защита вашего смарт-часов от царапин, ударов и других повреждений. Идеально подходит для активных людей, которые ведут динамичный образ жизни и хотят максимально защитить свои часы во время занятий спортом, путешествий или повседневного использования.',
+  price: 990,
+  rating: 4.7,
+  image: 'https://resources.cdn-kaspi.kz/img/m/p/pbe/p20/29962191.jpeg?format=gallery-medium',
+  images: [
+    'https://resources.cdn-kaspi.kz/img/m/p/pbe/p20/29962191.jpeg?format=gallery-medium',
+    'https://resources.cdn-kaspi.kz/img/m/p/p1e/p41/29962192.png?format=gallery-medium',
+    'https://resources.cdn-kaspi.kz/img/m/p/p3a/p41/29962193.png?format=gallery-medium',
+    'https://resources.cdn-kaspi.kz/img/m/p/pab/p41/29962197.png?format=gallery-medium'
+  ],
+  link: 'https://kaspi.kz/shop/p/chehol-classno-dlja-apple-watch-10-42-mm-prozrachnyi-136260049/?c=750000000',
+  likes: 120,
+  categoryId: 2
+},
+{
+  id: 19,
+  name: 'Смарт-очки Ray-Ban Meta Wayfarer RW4006 черный',
+  description: 'Легендарный стиль Ray-Ban и технологии Meta объединены в одной модели. Смарт-очки позволяют записывать видео, делать фото и слушать музыку. Линзы обеспечивают 100% защиту от UVA и UVB лучей и высокий комфорт при использовании.',
+  price: 273233,
+  rating: 4.7,
+  image: 'https://resources.cdn-kaspi.kz/img/m/p/pef/pd8/54777416.jpg?format=gallery-medium',
+  images: [
+    'https://resources.cdn-kaspi.kz/img/m/p/pef/pd8/54777416.jpg?format=gallery-medium',
+    'https://resources.cdn-kaspi.kz/img/m/p/pd3/pd8/54777417.jpg?format=gallery-medium',
+    'https://resources.cdn-kaspi.kz/img/m/p/pb7/pd8/54777418.jpg?format=gallery-medium'
+  ],
+  link: 'https://kaspi.kz/shop/p/smart-ochki-ray-ban-meta-wayfarer-standard-rw4006-601sm1-50-22-chernyi-116509833/?c=750000000',
+  likes: 0,
+  categoryId: 2
+},
+
+{
+  id: 20,
+  name: 'Наушники Apple USB-C MYQY3ZM/A белый',
+  description: 'Наушники Apple USB-C — удобное решение для повседневного использования. Подходят для iPhone и Android, имеют встроенный микрофон и современный разъем USB Type-C. Отличный звук и комфорт для музыки и звонков.',
+  price: 10460,
+  rating: 4.8,
+  image: 'https://resources.cdn-kaspi.kz/img/m/p/pa1/pc8/41468726.jpg?format=gallery-medium',
+  images: [
+    'https://resources.cdn-kaspi.kz/img/m/p/pa1/pc8/41468726.jpg?format=gallery-medium',
+    'https://resources.cdn-kaspi.kz/img/m/p/pf5/pc8/41468729.jpg?format=gallery-medium',
+    'https://resources.cdn-kaspi.kz/img/m/p/p7d/pcb/41468731.jpg?format=gallery-medium'
+  ],
+  link: 'https://kaspi.kz/shop/p/naushniki-apple-usb-c-myqy3zm-a-belyi-139440255/?c=750000000',
+  likes: 0,
+  categoryId: 3
 }
-    
   ];
 
+  get filteredProducts() {
+    if (this.categoryId === null) return this.products;
+    return this.products.filter(p => p.categoryId === this.categoryId);
+  }
 
-  
+  onLike(product: Product) {
+    product.likes++;
+  }
 
+  removeProduct(id: number) {
+    this.products = this.products.filter(p => p.id !== id);
+  }
 }

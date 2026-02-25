@@ -1,0 +1,11 @@
+<h1 class="title">Online Store</h1>
+
+<div class="grid">
+  @for (product of filteredProducts; track product.id) {
+    <app-product-card
+      [product]="product"
+      (like)="onLike(product)"
+      (delete)="removeProduct(product.id)">
+    </app-product-card>
+  }
+</div>

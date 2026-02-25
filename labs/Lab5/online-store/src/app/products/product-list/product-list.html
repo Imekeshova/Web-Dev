@@ -1,0 +1,15 @@
+<h1 class="title">Online Store</h1>
+
+@if (filteredProducts.length === 0) {
+  <p class="empty">No products in this category</p>
+} @else {
+  <div class="grid">
+    @for (product of filteredProducts; track product.id) {
+      <app-product-card
+        [product]="product"
+        (like)="onLike($event)"
+        (remove)="removeProduct($event)">
+      </app-product-card>
+    }
+  </div>
+}
